@@ -6,10 +6,12 @@ const Link = require('./models/links')
 const { nanoid } = require('nanoid')
 app.use(express.json())
 const pathDir = path.join(__dirname, "../public")
-const port = process.env.PORT
+
+const port = process.env.PORT || 3000
 
 
 app.use(express.static(pathDir))
+const notFound = path.join(__dirname, "../public/notfound.html")
 app.get('/', (req, res) => {
     res.render()
 })
@@ -27,7 +29,6 @@ app.post("/", async (req, res) => {
     try {
 
         let slug = req.body.slug || await generateSlug();
-        console.log(slug)
         const newUrl = new Link({ ...req.body, slug });
 
         await newUrl.save();
@@ -45,7 +46,7 @@ app.get('/:id', async (req, res) => {
     const slug = req.params.id;
     const link = await Link.findOne({ slug })
     if (!link) {
-        res.status(404).send("Link not found try again");
+        return res.status(404).sendFile(notFound);
     }
     res.redirect(link.url)
 })
