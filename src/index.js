@@ -33,12 +33,12 @@ app.post("/url", async (req, res) => {
 
         let slug = req.body.slug || await generateSlug();
         const newUrl = new Link({ ...req.body, slug });
-
+        console.log(newUrl);
         await newUrl.save();
         res.status(200).send(newUrl);
     }
     catch (e) {
-        return res.status(500).send(e);
+        return res.status(500).send("tesdy");
     }
 })
 
