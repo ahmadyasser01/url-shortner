@@ -49,16 +49,14 @@ app.get('/:id', async (req, res) => {
 
     try {
         const link = await Link.findOne({ slug })
-
+        res.redirect(link.url)
     }
     catch (e) {
-        if (!link) {
-            return res.status(404).sendFile(notFound);
-        }
+
+        return res.status(404).sendFile(notFound);
     }
 
 
-    res.redirect(link.url)
 })
 
 
