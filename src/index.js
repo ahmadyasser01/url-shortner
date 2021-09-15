@@ -7,7 +7,7 @@ const { nanoid } = require('nanoid')
 app.use(express.json())
 const pathDir = path.join(__dirname, "../public")
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT;
 
 
 app.use(express.static(pathDir))
@@ -37,9 +37,6 @@ app.post("/", async (req, res) => {
     catch (e) {
         return res.status(500).send(e);
     }
-
-
-
 })
 
 app.get('/:id', async (req, res) => {
