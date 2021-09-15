@@ -32,8 +32,9 @@ app.post("/url", async (req, res) => {
     try {
 
         let slug = req.body.slug || await generateSlug();
+        console.log(req.body);
         const newUrl = new Link({ ...req.body, slug });
-        console.log(newUrl);
+
         await newUrl.save();
         res.status(200).send(newUrl);
     }
