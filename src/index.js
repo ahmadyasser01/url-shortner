@@ -8,7 +8,10 @@ app.use(express.json())
 const pathDir = path.join(__dirname, "../public")
 
 const port = process.env.PORT;
+const cors = require('cors')
 
+
+app.use(cors())
 
 app.use(express.static(pathDir))
 const notFound = path.join(__dirname, "../public/notfound.html")
