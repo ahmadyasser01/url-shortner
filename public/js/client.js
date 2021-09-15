@@ -20,7 +20,7 @@ urlForm.addEventListener('submit', async (e) => {
     const urlInput = document.getElementById('floatingInput').value;
     const slugInput = document.getElementById('floatingInput2').value;
     console.log("urlis", urlInput, slugInput)
-    const response = await fetch('/', {
+    const response = await fetch('/url', {
         method: 'POST',
         headers: {
             'content-type': 'application/json',

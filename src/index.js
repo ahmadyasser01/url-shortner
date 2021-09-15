@@ -24,7 +24,7 @@ const generateSlug = async () => {
     return slug;
 }
 
-app.post("/", async (req, res) => {
+app.post("/url", async (req, res) => {
 
     try {
 
