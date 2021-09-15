@@ -19,12 +19,12 @@ app.get('/', (req, res) => {
     res.render()
 })
 const generateSlug = async (slug) => {
-    let slug = slug || nanoid(6);
+    let newSlug = slug || nanoid(6);
     while (await Link.find({ slug }) || !slug.match(/^[a-z0-9]+$/i)) {
-        slug = nanoid(6)
+        newSlug = nanoid(6)
     }
 
-    return slug;
+    return newSlug;
 }
 
 app.post("/url", async (req, res) => {
