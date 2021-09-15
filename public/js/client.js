@@ -22,6 +22,7 @@ urlForm.addEventListener('submit', async (e) => {
     console.log("urlis", urlInput, slugInput)
     const response = await fetch('https://ay-url-shortner.herokuapp.com/url', {
         method: 'POST',
+        mode: 'cors',
         headers: {
             'content-type': 'application/json',
         },
@@ -35,10 +36,9 @@ urlForm.addEventListener('submit', async (e) => {
         resultDiv.style.display = "block"
         resultDiv.innerHTML = `<a target="_blank" href=\' ${document.URL}${result.slug} \' > ${document.URL}${result.slug}</a > `;
     }
-    else if (response.status === 429) {
-        this.error = 'You are sending too many requests. Try again in 30 seconds.';
-    } else {
+    else {
         const result = await response.json();
+        resultDiv.style.display = "block"
         resultDiv.innerHTML = `Error :${response.status, result}`;
     }
 })
