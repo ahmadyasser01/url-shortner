@@ -1,18 +1,15 @@
 const mongoose = require('mongoose');
-const connect = async () => {
-    await mongoose.connect(process.env.MONGODB_URL, {
-        useNewUrlParser: true,
 
-    }).then(connected => {
-        console.log(connected)
-    }).catch(err => { throw new Error("can;t connect") })
-}
 try {
-    connect();
+    mongoose.connect(process.env.MONGODB_URL, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+
+
+    });
 }
-catch (e) {
-    return console.log(e);
-}
+
 
 
 
