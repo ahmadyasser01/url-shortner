@@ -39,7 +39,7 @@ app.post("/url", async (req, res) => {
         res.status(200).send(newUrl);
     }
     catch (e) {
-        return res.status(500).send("tesdy");
+        return res.status(500).send({ message: 'duplicate id please choose another id' });
 
     }
 })

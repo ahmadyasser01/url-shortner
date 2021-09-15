@@ -1,7 +1,6 @@
 const approot = document.getElementById('app-root')
 // Select the template
 const test = document.querySelector('#test').innerHTML
-console.log(test)
 let result = ''
 const html = Mustache.render(test, { result })
 approot.insertAdjacentHTML('afterend', html)
@@ -19,7 +18,6 @@ urlForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const urlInput = document.getElementById('floatingInput').value;
     const slugInput = document.getElementById('floatingInput2').value;
-    console.log("urlis", urlInput, slugInput)
     const response = await fetch('/url', {
         method: 'POST',
         headers: {
@@ -37,6 +35,6 @@ urlForm.addEventListener('submit', async (e) => {
     }
     else {
         resultDiv.style.display = "block"
-        resultDiv.innerHTML = `Error :${response.status, result}`;
+        resultDiv.innerHTML = `Error :${response.status},${result.message}`;
     }
 })
