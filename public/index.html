@@ -13,37 +13,39 @@
 </head>
 
 <body>
-    <div id="root">
-
-        <div class="container">
-            <h1>Hello url Url-Shortner</h1>
-            <form action="">
-                <div class="form-floating mb-3">
-                    <input type="url" class="form-control" id="floatingInput" placeholder="www.example.com">
-                    <label for="floatingInput">URL</label>
-                </div>
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="ay01" autocomplete="off">
-                    <label for="floatingInput2">id</label>
-                </div>
-                <button type="button" class="btn btn-outline-primary">Genrate</button>
-
-
-            </form>
-
-
-        </div>
-        <div class="alert alert-primary" role="alert">
-            A simple primary alert—check it out!
-        </div>
+    <div id="app-root">
 
     </div>
 
 
     <script id="test" type="text/html">
-        <div>
-        <p>{{message}}</p>
+        <div id="root">
+
+        <div class="container">
+            <h1>Hello url Url-Shortner</h1>
+            <form action="" class="url-form">
+                <div class="form-floating mb-3">
+                    <input type="url" class="form-control" id="floatingInput" placeholder="www.example.com">
+                    <label for="floatingInput">URL</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingInput2" placeholder="ay01" autocomplete="off">
+                    <label for="floatingInput2">id</label>
+                </div>
+
+                <button type="submit" type="button" class="btn btn-outline-primary">Generate</button>
+
+            </form>
+            <div class="alert alert-primary result" role="alert">
+                {{result}}
+            </div>
+
         </div>
+
+    </div>
+
+
+
         </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js
     "></script>
