@@ -37,7 +37,6 @@ urlForm.addEventListener('submit', async (e) => {
         resultDiv.innerHTML = `<a target="_blank" href=\' ${document.URL}${result.slug} \' > ${document.URL}${result.slug}</a > `;
     }
     else {
-        const result = await response.json();
         resultDiv.style.display = "block"
         resultDiv.innerHTML = `Error :${response.status, result}`;
     }
