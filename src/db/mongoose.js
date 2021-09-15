@@ -9,7 +9,7 @@ try {
     }).catch(err => { throw new Error("can;t connect") })
 }
 catch (e) {
-    console.log(e);
+    return console.log(e);
 }
 
 
