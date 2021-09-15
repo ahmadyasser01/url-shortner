@@ -35,7 +35,10 @@ urlForm.addEventListener('submit', async (e) => {
         resultDiv.style.display = "block"
         resultDiv.innerHTML = `<a target="_blank" href=\' ${document.URL}${result.slug} \' > ${document.URL}${result.slug}</a > `;
     }
-    else {
-        resultDiv.innerHTML = `Error :${response.status}`;
+    else if (response.status === 429) {
+        this.error = 'You are sending too many requests. Try again in 30 seconds.';
+    } else {
+        const result = await response.json();
+        resultDiv.innerHTML = `Error :${response.status, result}`;
     }
 })
