@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 })
 const generateSlug = async (slug) => {
     let newSlug = slug || nanoid(6);
-    while (await Link.find({ slug }) || !slug.match(/^[a-z0-9]+$/i)) {
+    while (await Link.find({ newSlug }) || !newSlug.match(/^[a-z0-9]+$/i)) {
         newSlug = nanoid(6)
     }
 
