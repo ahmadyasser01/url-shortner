@@ -46,10 +46,18 @@ app.post("/url", async (req, res) => {
 
 app.get('/:id', async (req, res) => {
     const slug = req.params.id;
-    const link = await Link.findOne({ slug })
-    if (!link) {
-        return res.status(404).sendFile(notFound);
+
+    try {
+        const link = await Link.findOne({ slug })
+
     }
+    catch (e) {
+        if (!link) {
+            return res.status(404).sendFile(notFound);
+        }
+    }
+
+
     res.redirect(link.url)
 })
 
