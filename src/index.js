@@ -18,8 +18,8 @@ const notFound = path.join(__dirname, "../public/notfound.html")
 app.get('/', (req, res) => {
     res.render()
 })
-const generateSlug = async () => {
-    let slug = nanoid(6);
+const generateSlug = async (slug) => {
+    let slug = slug || nanoid(6);
     while (await Link.find({ slug }) || !slug.match(/^[a-z0-9]+$/i)) {
         slug = nanoid(6)
     }
@@ -31,7 +31,7 @@ app.post("/url", async (req, res) => {
 
     try {
 
-        let slug = req.body.slug || await generateSlug();
+        let slug = await generateSlug(req.body.slug);
         console.log(req.body);
         const newUrl = new Link({ ...req.body, slug });
 
