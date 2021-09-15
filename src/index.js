@@ -32,7 +32,7 @@ app.post("/url", async (req, res) => {
         const newUrl = new Link({ ...req.body, slug });
 
         await newUrl.save();
-        res.send(newUrl);
+        res.status(200).send(newUrl);
     }
     catch (e) {
         return res.status(500).send(e);

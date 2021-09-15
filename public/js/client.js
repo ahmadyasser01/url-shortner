@@ -30,7 +30,7 @@ urlForm.addEventListener('submit', async (e) => {
             slug: slugInput || undefined,
         }),
     });
-    if (response.ok) {
+    if (response.status === 200) {
         result = await response.json();
         resultDiv.style.display = "block"
         resultDiv.innerHTML = `<a target="_blank" href=\' ${document.URL}${result.slug} \' > ${document.URL}${result.slug}</a > `;
