@@ -3,7 +3,7 @@ const app = express();
 const path = require('path')
 require('./db/mongoose');
 const Link = require('./models/links')
-
+const { nanoid } = require('nanoid')
 app.use(express.json())
 const pathDir = path.join(__dirname, "../public")
 const port = process.env.PORT
@@ -11,16 +11,25 @@ const port = process.env.PORT
 
 app.use(express.static(pathDir))
 app.get('/', (req, res) => {
-    res.send({
-        message: "Hello-world, app works fine"
-    })
+    res.render()
 })
+const generateSlug = async () => {
+    let slug = nanoid(6);
+    while (! await Link.find({ slug }) || !slug.match(/^[a-z0-9]+$/i)) {
+        slug = nanoid(6)
+    }
 
+    return slug;
+}
 
 app.post("/", async (req, res) => {
 
     try {
-        const newUrl = new Link(req.body);
+
+        let slug = req.body.slug || await generateSlug();
+        console.log(slug)
+        const newUrl = new Link({ ...req.body, slug });
+
         await newUrl.save();
         res.send(newUrl);
     }

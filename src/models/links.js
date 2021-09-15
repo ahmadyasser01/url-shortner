@@ -7,7 +7,9 @@ const linksSchema = new mongoose.Schema({
         type: String,
         required: false,
         trim: true,
-        unique: true
+        unique: true,
+        match: [/^[a-z0-9]+$/i],
+        lowercase: true
     },
     url: {
         type: String,
